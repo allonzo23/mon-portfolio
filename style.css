@@ -357,12 +357,14 @@ main {
 
 
 
+
+
 /* SECTION PORTFOLIO */
 
 .portfolio {
+    padding: 40px 20px;
     max-width: 1200px;
-    margin: 40px auto;
-    padding: 20px;
+    margin: auto;
 }
 
 .portfolio-header {
@@ -370,124 +372,213 @@ main {
     margin-bottom: 45px;
 }
 
+.portfolio-subtitle {
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
 .portfolio-header h1 {
-    color: #343a40;
-    font-size: 2.2rem;
-    margin-bottom: 15px;
+    font-size: 36px;
+    margin: 12px 0;
 }
 
 .portfolio-header p {
-    color: #666;
-    line-height: 1.7;
     max-width: 650px;
     margin: auto;
+    line-height: 1.7;
+    color: #64748b;
 }
+
+/* CONTENEUR DES PROJETS */
 
 .portfolio-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
 }
 
+/* CARTE */
+
 .projet-card {
     background: white;
-    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .projet-card:hover {
-    transform: translateY(-7px);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
+/* IMAGE */
+
 .projet-image {
-    height: 170px;
-    background: linear-gradient(135deg, #34495e, #3498db);
+    height: 150px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    background: #eff6ff;
 }
 
 .projet-image span {
-    font-size: 4rem;
+    font-size: 55px;
 }
+
+/* CONTENU */
 
 .projet-content {
     padding: 22px;
 }
 
+.projet-entete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.projet-categorie {
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* STATUT */
+
+.projet-statut {
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.termine {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.encours {
+    background: #fef3c7;
+    color: #92400e;
+}
+
 .projet-content h2 {
-    color: #343a40;
-    font-size: 1.2rem;
+    font-size: 19px;
     margin-bottom: 12px;
 }
 
 .projet-content p {
-    color: #666;
-    font-size: 0.9rem;
-    line-height: 1.7;
-    margin-bottom: 20px;
+    color: #64748b;
+    line-height: 1.6;
+    font-size: 14px;
 }
+
+/* TECHNOLOGIES */
 
 .projet-technologies {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 22px;
+    margin: 20px 0;
 }
 
 .projet-technologies span {
-    background: #e8f0fe;
-    color: #2454a6;
-    padding: 7px 10px;
-    border-radius: 5px;
-    font-size: 0.75rem;
-    font-weight: 600;
+    background: #f1f5f9;
+    color: #334155;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
 }
+
+/* LIENS */
 
 .projet-liens {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
     align-items: center;
+    gap: 12px;
+    margin-top: 20px;
 }
 
-.projet-liens a {
+.btn-details,
+.btn-github {
+    padding: 10px 13px;
+    border-radius: 7px;
+    border: none;
     text-decoration: none;
-    background: #2454a6;
-    color: white;
-    padding: 9px 13px;
-    border-radius: 5px;
-    font-size: 0.85rem;
+    font-size: 13px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
 }
 
-.projet-liens a:hover {
-    background: #183b78;
+.btn-details {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-github {
+    background: #0f172a;
+    color: white;
 }
 
 .lien-indisponible {
-    color: #888;
-    font-size: 0.8rem;
+    color: #94a3b8;
+    font-size: 12px;
 }
 
-@media (max-width: 900px) {
-    .portfolio-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* DETAILS */
+
+.details-projet {
+    margin-top: 40px;
+    padding: 30px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: white;
+    line-height: 1.7;
 }
+
+.details-projet h2 {
+    margin-bottom: 15px;
+}
+
+.details-projet h3 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.btn-fermer {
+    margin-top: 20px;
+    background: #dc2626;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
 
 @media (max-width: 600px) {
-    .portfolio-container {
-        grid-template-columns: 1fr;
+    .portfolio-header h1 {
+        font-size: 28px;
     }
 
-    .portfolio-header h1 {
-        font-size: 1.7rem;
+    .portfolio {
+        padding: 25px 12px;
+    }
+
+    .details-projet {
+        padding: 20px;
     }
 }
-
-
 
 
 /* SECTION CONTACT */

@@ -5,14 +5,13 @@ export function home() {
 
             <div class="home-text">
 
-                <h1>Bonjour, bienvenue sur mon portfolio !</h1>
+                <h1>Bonjour, je suis RANTENAINA Yhasminh !</h1>
 
-                <h2>Je suis développeur Full Stack JavaScript</h2>
+                <h2>Développeur Full Stack spécialisé en Python</h2>
 
-                <p>
-                    Passionné par le développement informatique,
-                    je conçois et développe des applications web
-                    en utilisant des technologies modernes.
+                <p>Diplômé de l'École Nationale d'Informatique (ENI), 
+                je suis passionné par la conception et le développement 
+                d'applications web modernes, performantes et évolutives.
                 </p>
 
                 <p>

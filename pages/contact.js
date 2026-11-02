@@ -19,7 +19,7 @@ export function contact() {
                         <span>📧</span>
                         <div>
                             <h3>Email</h3>
-                            <p>votre.email@gmail.com</p>
+                            <p>yhasminhrantenaina@gmail.com</p>
                         </div>
                     </div>
 
