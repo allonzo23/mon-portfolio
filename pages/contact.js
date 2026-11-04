@@ -1,7 +1,13 @@
+
+import { supabase } from "../js/supabase.js";
+
 export function contact() {
+
     const app = document.getElementById("app");
+
     app.innerHTML = `
         <section class="contact">
+
             <div class="contact-header">
                 <h1>Contactez-moi</h1>
                 <p>
@@ -47,61 +53,122 @@ export function contact() {
                         <span>🌐</span>
                         <div>
                             <h3>LinkedIn</h3>
-                            <p>Ajoutez ici votre profil LinkedIn</p>
+                            <p>Yhasminh Rantenaina</p>
                         </div>
                     </div>
                 </div>
 
                 <form class="contact-form" id="contact-form">
+
                     <h2>Envoyer un message</h2>
 
                     <label for="nom">Votre nom</label>
-                    <input type="text" id="nom"
-                           placeholder="Entrez votre nom" required>
+                    <input type="text"
+                           id="nom"
+                           maxlength="100"
+                           placeholder="Entrez votre nom"
+                           required>
 
                     <label for="email">Votre adresse e-mail</label>
-                    <input type="email" id="email"
-                           placeholder="exemple@gmail.com" required>
+                    <input type="email"
+                           id="email"
+                           maxlength="150"
+                           placeholder="exemple@gmail.com"
+                           required>
 
                     <label for="sujet">Sujet</label>
-                    <input type="text" id="sujet"
-                           placeholder="Objet de votre message" required>
+                    <input type="text"
+                           id="sujet"
+                           maxlength="200"
+                           placeholder="Objet de votre message"
+                           required>
 
                     <label for="message">Votre message</label>
-                    <textarea id="message" rows="5"
+                    <textarea id="message"
+                              rows="5"
+                              maxlength="10000"
                               placeholder="Écrivez votre message..."
                               required></textarea>
 
-                    <button type="submit">Envoyer le message</button>
+                    <button type="submit" id="btn-envoyer">
+                        Envoyer le message
+                    </button>
+
+                    <p id="resultat-message" aria-live="polite"></p>
+
                 </form>
 
             </div>
         </section>
     `;
 
+    // Récupération du formulaire
     const formulaire = document.getElementById("contact-form");
 
-    formulaire.addEventListener("submit", function (event) {
+    // Gestion de l'envoi
+    formulaire.addEventListener("submit", async function (event) {
+
         event.preventDefault();
 
-        const nom = document.getElementById("nom").value;
-        const email = document.getElementById("email").value;
-        const sujet = document.getElementById("sujet").value;
-        const message = document.getElementById("message").value;
+        const nom = document.getElementById("nom").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const sujet = document.getElementById("sujet").value.trim();
+        const message = document.getElementById("message").value.trim();
 
-        const destinataire = "votre.email@gmail.com";
+        const resultat = document.getElementById("resultat-message");
+        const bouton = document.getElementById("btn-envoyer");
 
-        const contenu = `
-Nom : ${nom}
-Email : ${email}
+        // Vérification des champs
+        if (!nom || !email || !sujet || !message) {
+            resultat.textContent = "Veuillez remplir tous les champs.";
+            return;
+        }
 
-Message :
-${message}
-        `;
+        // Désactivation du bouton pendant l'envoi
+        bouton.disabled = true;
+        bouton.textContent = "Envoi en cours...";
 
-        const lienEmail =
-            `mailto:${destinataire}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(contenu)}`;
+        resultat.textContent = "";
 
-        window.location.href = lienEmail;
+        try {
+
+            // Insertion dans PostgreSQL via Supabase
+            const { error } = await supabase
+                .from("messages")
+                .insert([
+                    {
+                        nom: nom,
+                        email: email,
+                        sujet: sujet,
+                        contenu: message
+                    }
+                ]);
+
+            if (error) {
+                throw error;
+            }
+
+            // Message de confirmation
+            resultat.textContent =
+                "Votre message a été envoyé avec succès !";
+
+            // Réinitialisation du formulaire
+            formulaire.reset();
+
+        } catch (error) {
+
+            console.error("Erreur Supabase :", error);
+
+            resultat.textContent =
+                "Une erreur est survenue lors de l'envoi. Veuillez réessayer.";
+
+        } finally {
+
+            // Réactivation du bouton
+            bouton.disabled = false;
+            bouton.textContent = "Envoyer le message";
+
+        }
+
     });
 }

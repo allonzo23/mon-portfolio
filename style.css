@@ -727,6 +727,17 @@ main {
     }
 }
 
+/* sur contact */
+#resultat-message {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#btn-envoyer:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
 
 
 /* FOOTER */
