@@ -149,6 +149,7 @@ export function contact() {
             }
 
             // Message de confirmation
+            resultat.style.color = 'green';
             resultat.textContent =
                 "Votre message a été envoyé avec succès !";
 
@@ -158,7 +159,7 @@ export function contact() {
         } catch (error) {
 
             console.error("Erreur Supabase :", error);
-
+            resultat.style.color = 'red';
             resultat.textContent =
                 "Une erreur est survenue lors de l'envoi. Veuillez réessayer.";
 
