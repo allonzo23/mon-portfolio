@@ -24,9 +24,8 @@ export const porfolio = () => {
         },
         {
             id: 2,
-            titre: "AEFANA - Gestion d'association",
-            description: "Application de gestion associative permettant d'administrer les membres, les mandats universitaires, le bureau, les cotisations et les opérations financières.",
-            details: "Ce projet consiste à concevoir une solution centralisée pour faciliter l'administration d'une association. Il comprend la gestion des membres, des responsabilités, des mandats et le suivi financier.",
+            titre: "AEFANA - Gestion associative",
+            description: "Application web de gestion administrative et financière d'une association.",
             technologies: [
                 "Python",
                 "PostgreSQL",
@@ -37,7 +36,7 @@ export const porfolio = () => {
             statut: "En développement",
             github: null,
             demo: null,
-            categorie: "Python & Backend"
+            categorie: "Développement Web"
         },
         {
             id: 3,
@@ -50,7 +49,7 @@ export const porfolio = () => {
                 "PostgreSQL",
                 "Prisma"
             ],
-            statut: "En développement",
+            statut: "En phase de conception",
             github: null,
             demo: null,
             categorie: "Développement Web"
@@ -110,8 +109,11 @@ export const porfolio = () => {
 
                                 <button
                                     class="btn-details"
-                                    data-id="${projet.id}">
+                                    data-id="${projet.id}"
+                                    data-action="${projet.id === 2 ? 'aefana' : 'details'}">
+
                                     Découvrir le projet
+
                                 </button>
 
                                 ${projet.github
@@ -146,7 +148,86 @@ export const porfolio = () => {
         </section>
     `;
 
-    // Afficher les détails d'un projet
+
+
+    // Gestion des boutons de découverte des projets
+    const boutons = document.querySelectorAll(".btn-details");
+
+    const detailsContainer = document.getElementById("projet-details");
+
+    boutons.forEach(bouton => {
+
+        bouton.addEventListener("click", () => {
+
+            const id = Number(bouton.dataset.id);
+
+            const projet = projets.find(p => p.id === id);
+
+            // Vérifier si le projet existe
+            if (!projet) return;
+
+            // Cas particulier : projet AEFANA
+            if (bouton.dataset.action === "aefana") {
+
+                location.hash = "#projet-aefana";
+
+                return;
+            }
+
+            // Pour les autres projets : afficher les détails
+            detailsContainer.innerHTML = `
+
+            <div class="details-projet">
+
+                <h2>${projet.titre}</h2>
+
+                <span class="projet-statut ${projet.statut === "Réalisé"
+                    ? "termine"
+                    : "encours"
+                }">
+                    ${projet.statut}
+                </span>
+
+                <h3>Présentation</h3>
+
+                <p>${projet.details}</p>
+
+                <h3>Technologies utilisées</h3>
+
+                <div class="projet-technologies">
+
+                    ${projet.technologies.map(tech => `
+                        <span>${tech}</span>
+                    `).join("")}
+
+                </div>
+
+                <button class="btn-fermer" id="fermer-details">
+                    Fermer
+                </button>
+
+            </div>
+        `;
+
+            // Bouton de fermeture
+            document.getElementById("fermer-details")
+                .addEventListener("click", () => {
+
+                    detailsContainer.innerHTML = "";
+
+                });
+
+            // Défilement vers les détails
+            detailsContainer.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        });
+
+    });
+
+    /*// Afficher les détails d'un projet
     const boutons = document.querySelectorAll(".btn-details");
     const detailsContainer = document.getElementById("projet-details");
 
@@ -198,6 +279,7 @@ export const porfolio = () => {
             });
         });
     });
+    */
 
     // Initialiser les icônes Lucide si la bibliothèque est chargée
     if (window.lucide) {

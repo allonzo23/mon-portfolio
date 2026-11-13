@@ -3,6 +3,50 @@ import { home } from "./pages/home.js";
 import { competence } from "./pages/competence.js";
 import { porfolio } from "./pages/porfolio.js";
 import { contact } from "./pages/contact.js";
+import { projetAefana } from "./pages/projet-aefana.js";
+
+const routes = {
+    "#home": home,
+    "#competence": competence,
+    "#porfolio": porfolio,
+    "#contact": contact,
+    "#projet-aefana": projetAefana
+};
+
+function afficherPage() {
+    const page = location.hash || "#home";
+    const afficher = routes[page] || home;
+
+    afficher();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    const liens = document.querySelectorAll(".navbar a");
+
+    liens.forEach(lien => {
+        lien.classList.remove("active");
+
+        if (lien.getAttribute("href") === page) {
+            lien.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("hashchange", afficherPage);
+
+afficherPage();
+
+
+
+
+/*
+import { home } from "./pages/home.js";
+import { competence } from "./pages/competence.js";
+import { porfolio } from "./pages/porfolio.js";
+import { contact } from "./pages/contact.js";
 
 // Association entre les routes et les fonctions
 const routes = {
@@ -44,35 +88,4 @@ window.addEventListener("hashchange", afficherPage);
 // Charger la première page
 afficherPage();
 
-
-
-
-
-
-/*
-import { home } from "./pages/home.js";
-import { competence } from "./pages/competence.js";
-import { porfolio } from "./pages/porfolio.js";
-import { contact } from "./pages/contact.js";
-
-function afficherPage() {
-    const page = location.hash;
-
-    if (page === "#competence") {
-        competence();
-    }
-    else if (page === "#porfolio") {
-        porfolio();
-    }
-    else if (page === "#contact") {
-        contact();
-    }
-    else {
-        home();
-    }
-}
-
-window.addEventListener("hashchange", afficherPage);
-
-afficherPage();
 */
