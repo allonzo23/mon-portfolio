@@ -227,60 +227,6 @@ export const porfolio = () => {
 
     });
 
-    /*// Afficher les détails d'un projet
-    const boutons = document.querySelectorAll(".btn-details");
-    const detailsContainer = document.getElementById("projet-details");
-
-    boutons.forEach(bouton => {
-        bouton.addEventListener("click", () => {
-
-            const id = Number(bouton.dataset.id);
-
-            const projet = projets.find(p => p.id === id);
-
-            detailsContainer.innerHTML = `
-                <div class="details-projet">
-
-                    <h2>${projet.titre}</h2>
-
-                    <span class="projet-statut ${projet.statut === "Réalisé"
-                    ? "termine"
-                    : "encours"
-                }">
-                        ${projet.statut}
-                    </span>
-
-                    <h3>Présentation</h3>
-                    <p>${projet.details}</p>
-
-                    <h3>Technologies utilisées</h3>
-
-                    <div class="projet-technologies">
-                        ${projet.technologies.map(tech => `
-                            <span>${tech}</span>
-                        `).join("")}
-                    </div>
-
-                    <button class="btn-fermer" id="fermer-details">
-                        Fermer
-                    </button>
-
-                </div>
-            `;
-
-            document.getElementById("fermer-details")
-                .addEventListener("click", () => {
-                    detailsContainer.innerHTML = "";
-                });
-
-            detailsContainer.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        });
-    });
-    */
-
     // Initialiser les icônes Lucide si la bibliothèque est chargée
     if (window.lucide) {
         window.lucide.createIcons();

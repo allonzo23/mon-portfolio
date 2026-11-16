@@ -36,7 +36,7 @@ export const projetAefana = () => {
 
                     <span class="aefana-statut">
                         <i data-lucide="clock"></i>
-                        En phase de conception
+                        En phase de développement
                     </span>
 
                 </div>
@@ -283,7 +283,7 @@ export const projetAefana = () => {
 
                 <i data-lucide="lightbulb"></i>
 
-                <h2>Un projet en cours de conception</h2>
+                <h2>Un projet en cours de développement</h2>
 
                 <p>
                     AEFANA ambitionne de fournir un outil centralisé,

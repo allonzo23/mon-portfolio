@@ -5,7 +5,7 @@ export function home() {
 
             <div class="home-text">
 
-                <h1>Bonjour, je suis RANTENAINA Yhasminh !</h1>
+                <h1>Bonjour, je suis Yhasminh RANTENAINA !</h1>
 
                 <h2>Développeur Full Stack spécialisé en Python</h2>
 
@@ -22,6 +22,7 @@ export function home() {
                 <div class="home-buttons">
                     <a href="#porfolio">Découvrir mes projets</a>
                     <a href="#contact">Me contacter</a>
+                    <a target="_blank" href="assets/cv/CV_yhasminh_rantenaina.pdf" >Mon CV</a>
                 </div>
 
             </div>
@@ -31,7 +32,7 @@ export function home() {
                 <h3>Informations personnelles</h3>
 
                 <ul>
-                    <li><strong>Adresse :</strong> Madagascar</li>
+                    <li><strong>Adresse :</strong> Fianarantsoa, Madagascar</li>
                     <li><strong>Langues :</strong> Français, Anglais, Malagasy</li>
                     <li><strong>Domaine :</strong> Développement Web</li>
                 </ul>

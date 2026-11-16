@@ -156,7 +156,7 @@ export function competence() {
                         <span>Linux / Debian</span>
                         <span>Windows</span>
                         <span>VS Code</span>
-                        <span>Insomnia</span>
+                        <span>Insomnia/Postman</span>
                     </div>
 
                 </article>

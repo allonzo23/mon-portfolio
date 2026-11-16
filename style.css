@@ -89,6 +89,7 @@ header p::first-letter {
 .navbar a.active {
     color: white;
     background-color: #3867d6;
+    /* border-bottom: 3px double #3867d6;*/
     font-weight: bold;
     border-bottom: none;
 }
